@@ -1,0 +1,14 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "XddCards.Grpc.Users";
+
+package Users;
+
+service UserGrpc {
+	rpc CreateGame(CreateGameRequest) returns (CreateGameReply);
+}
+
+message CreateGameRequest{}
+message CreateGameReply{
+   bool value = 1;
+}

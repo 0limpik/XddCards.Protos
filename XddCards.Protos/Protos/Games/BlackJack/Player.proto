@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+option csharp_namespace = "XddCards.Grpc.Games.BlackJack";
+
+package BlackJack;
+
+import "Protos/Games/BlackJack/Game.proto";
+
+service PlayerGrpc {
+    rpc CanTurn (CanTurnRequest) returns (CanTurnReply);
+    rpc GetScores (ScoresRequest) returns (ScoresReply);
+    rpc GetStatus(StatusRequest) returns (StatsReply);
+ }
+
+message CanTurnRequest{
+    BlackJack.PlayerReply player = 1;
+}
+message CanTurnReply{
+   bool value = 1;
+}
+
+message ScoresRequest{}
+ message ScoresReply {
+   repeated int32 Scores = 1;
+ }
+ 
+message StatusRequest{}
+ message StatsReply{
+    enum PlayerStatus
+    {
+        Empty = 0;
+        Win = 1;
+        Lose = 2;
+        Push = 3;
+        Bust = 4;
+    }
+    PlayerStatus status = 1;
+ }

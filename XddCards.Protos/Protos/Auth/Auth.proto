@@ -1,0 +1,16 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "XddCards.Grpc.Auth";
+
+package Auth;
+
+service AuthGrpc {
+	rpc Auth(AuthRequest) returns (AuthReply);
+}
+
+message AuthRequest{
+	string nickname = 1;
+}
+message AuthReply{
+	string token = 1;
+}

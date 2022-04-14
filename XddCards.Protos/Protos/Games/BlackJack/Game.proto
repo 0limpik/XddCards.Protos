@@ -5,6 +5,7 @@ option csharp_namespace = "XddCards.Grpc.Games.BlackJack";
 package BlackJack;
 
 service GameGrpc {
+  rpc OnGameEnd (GameEndRequest) returns (stream GameEndReply);
   rpc IsGame (IsGameRequest) returns (IsGameReply);
   rpc Players (PlayersRequest) returns (PlayersReply);
   rpc Dealer (DealerRequest) returns (PlayerReply);
@@ -15,38 +16,30 @@ service GameGrpc {
   rpc Stand(PlayerReply) returns (StandReply);
 }
 
-message IsGameRequest {
-	int32 id = 1;
-}
+message GameEndRequest {}
+message GameEndReply {}
+
+message IsGameRequest {}
 message IsGameReply {
   bool value = 1;
 }
 
-message PlayersRequest {
-	int32 id = 1;
-}
+message PlayersRequest {}
 message PlayersReply {
   repeated PlayerReply Players = 1;
 }
 
-message DealerRequest {
-	int32 id = 1;
-}
+message DealerRequest {}
 message PlayerReply {
 	int32 id = 1;
 }
 
 message InitRequest {
-  int32 id = 1;
-  int32 playerCount = 2;
+	int32 playerCount = 2;
 }
-message InitReply {
-	int32 id = 1;
-}
+message InitReply {}
 
-message StartRequest {
-	int32 id = 1;
-}
+message StartRequest {}
 message StartReply {}
 
 message HitReply {}

@@ -15,7 +15,7 @@ service PlayerGrpc {
     rpc CanTurn (CanTurnRequest) returns (CanTurnReply);
     rpc GetScores (ScoresRequest) returns (ScoresReply);
     rpc GetStatus(StatusRequest) returns (StatsReply);
- }
+}
 
 message OnCardAddRequest {
     BlackJack.PlayerReply player = 1;
@@ -43,12 +43,16 @@ message CanTurnReply{
    bool value = 1;
 }
 
-message ScoresRequest{}
+message ScoresRequest{
+    BlackJack.PlayerReply player = 1;
+}
 message ScoresReply {
    repeated int32 Scores = 1;
  }
  
-message StatusRequest{}
+message StatusRequest{
+    BlackJack.PlayerReply player = 1;
+}
 message StatsReply{
     enum PlayerStatus
     {

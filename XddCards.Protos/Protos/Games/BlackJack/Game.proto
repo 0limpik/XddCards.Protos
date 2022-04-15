@@ -4,8 +4,12 @@ option csharp_namespace = "XddCards.Grpc.Games.BlackJack";
 
 package BlackJack;
 
+import "Protos/Games/Cards.proto";
+
 service GameGrpc {
   rpc OnGameEnd (GameEndRequest) returns (stream GameEndReply);
+  rpc OnDillerUpHiddenCard (OnDillerUpHiddenCardRequest) returns (stream OnDillerUpHiddenCardReply);
+
   rpc IsGame (IsGameRequest) returns (IsGameReply);
   rpc Players (PlayersRequest) returns (PlayersReply);
   rpc Dealer (DealerRequest) returns (PlayerReply);
@@ -18,6 +22,11 @@ service GameGrpc {
 
 message GameEndRequest {}
 message GameEndReply {}
+
+message OnDillerUpHiddenCardRequest {}
+message OnDillerUpHiddenCardReply {
+	Cards.CardMessage card = 1;
+}
 
 message IsGameRequest {}
 message IsGameReply {

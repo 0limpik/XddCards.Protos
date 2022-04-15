@@ -6,11 +6,35 @@ package BlackJack;
 
 import "Protos/Games/BlackJack/Game.proto";
 
+import "Protos/Games/Cards.proto";
+
 service PlayerGrpc {
+    rpc OnCardAdd (OnCardAddRequest) returns (stream OnCardAddReply);
+    rpc OnResult (OnResultRequest) returns (stream OnResultReply);
+
     rpc CanTurn (CanTurnRequest) returns (CanTurnReply);
     rpc GetScores (ScoresRequest) returns (ScoresReply);
     rpc GetStatus(StatusRequest) returns (StatsReply);
  }
+
+message OnCardAddRequest {
+    BlackJack.PlayerReply player = 1;
+}
+message OnCardAddReply {
+    Cards.CardMessage card = 1;
+}
+
+message OnResultRequest {
+    BlackJack.PlayerReply player = 1;
+}
+message OnResultReply {
+    enum GameResult{
+        Win = 0;
+        Lose = 1;
+        Push = 2;
+    }
+    GameResult result = 1;
+}
 
 message CanTurnRequest{
     BlackJack.PlayerReply player = 1;
@@ -20,12 +44,12 @@ message CanTurnReply{
 }
 
 message ScoresRequest{}
- message ScoresReply {
+message ScoresReply {
    repeated int32 Scores = 1;
  }
  
 message StatusRequest{}
- message StatsReply{
+message StatsReply{
     enum PlayerStatus
     {
         Empty = 0;

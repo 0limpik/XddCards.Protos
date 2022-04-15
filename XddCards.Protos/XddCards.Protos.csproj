@@ -8,6 +8,7 @@
     <Protobuf Include="Protos\Greet.proto" GrpcServices="Server, Client" />
 	  
     <Protobuf Include="Protos\Games\Games.proto" GrpcServices="Server, Client" />
+    <Protobuf Include="Protos\Games\Cards.proto" GrpcServices="Server, Client" />
     <Protobuf Include="Protos\Games\BlackJack\Game.proto" GrpcServices="Server, Client" />
     <Protobuf Include="Protos\Games\BlackJack\Player.proto" GrpcServices="Server, Client" />
     <Protobuf Include="Protos\Users\User.proto" GrpcServices="Server, Client" />

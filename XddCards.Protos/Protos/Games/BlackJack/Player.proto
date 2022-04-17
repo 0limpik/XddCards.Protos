@@ -4,56 +4,30 @@ option csharp_namespace = "XddCards.Grpc.Games.BlackJack";
 
 package BlackJack;
 
-import "Protos/Games/BlackJack/Game.proto";
-
 import "Protos/Games/Cards.proto";
 
 service PlayerGrpc {
-    rpc OnCardAdd (OnCardAddRequest) returns (stream OnCardAddReply);
-    rpc OnResult (OnResultRequest) returns (stream OnResultReply);
+    rpc CanTurn (Player) returns (CanTurnReply);
+    rpc GetScores (Player) returns (ScoresReply);
+    rpc GetStatus(Player) returns (StatusReply);
 
-    rpc CanTurn (CanTurnRequest) returns (CanTurnReply);
-    rpc GetScores (ScoresRequest) returns (ScoresReply);
-    rpc GetStatus(StatusRequest) returns (StatsReply);
-}
-
-message OnCardAddRequest {
-    BlackJack.PlayerReply player = 1;
-}
-message OnCardAddReply {
-    Cards.CardMessage card = 1;
+    rpc Hit(Player) returns (HitReply);
+    rpc Stand(Player) returns (StandReply);
 }
 
-message OnResultRequest {
-    BlackJack.PlayerReply player = 1;
-}
-message OnResultReply {
-    enum GameResult{
-        Win = 0;
-        Lose = 1;
-        Push = 2;
-    }
-    GameResult result = 1;
+message Player {
+	int32 id = 1;
 }
 
-message CanTurnRequest{
-    BlackJack.PlayerReply player = 1;
-}
 message CanTurnReply{
    bool value = 1;
 }
 
-message ScoresRequest{
-    BlackJack.PlayerReply player = 1;
-}
 message ScoresReply {
    repeated int32 Scores = 1;
- }
- 
-message StatusRequest{
-    BlackJack.PlayerReply player = 1;
 }
-message StatsReply{
+
+message StatusReply{
     enum PlayerStatus
     {
         Empty = 0;
@@ -63,4 +37,10 @@ message StatsReply{
         Bust = 4;
     }
     PlayerStatus status = 1;
- }
+}
+
+message HitReply {
+    bool canTurn = 1;
+}
+
+message StandReply {}

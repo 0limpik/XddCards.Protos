@@ -5,21 +5,26 @@ option csharp_namespace = "XddCards.Grpc.Games.BlackJack";
 package BlackJack;
 
 import "Protos/Games/Cards.proto";
+import "Protos/Games/BlackJack/Player.proto";
 
 service GameGrpc {
-  rpc OnGameEnd (GameEndRequest) returns (stream GameEndReply);
-  rpc OnDillerUpHiddenCard (OnDillerUpHiddenCardRequest) returns (stream OnDillerUpHiddenCardReply);
+	//Game
+	rpc OnGameEnd (GameEndRequest) returns (stream GameEndReply);
+	rpc OnDillerUpHiddenCard (OnDillerUpHiddenCardRequest) returns (stream OnDillerUpHiddenCardReply);
 
-  rpc IsGame (IsGameRequest) returns (IsGameReply);
-  rpc Players (PlayersRequest) returns (PlayersReply);
-  rpc Dealer (DealerRequest) returns (PlayerReply);
+	rpc IsGame (IsGameRequest) returns (IsGameReply);
+	rpc Init(InitRequest) returns (InitReply);
+	rpc Start(StartRequest) returns (StartReply);
 
-  rpc Init(InitRequest) returns (InitReply);
-  rpc Start(StartRequest) returns (StartReply);
-  rpc Hit(PlayerReply) returns (HitReply);
-  rpc Stand(PlayerReply) returns (StandReply);
+	//Players
+	rpc OnCardAdd (OnCardAddRequest) returns (stream OnCardAddReply);
+	rpc OnResult (OnResultRequest) returns (stream OnResultReply);
+
+	rpc Players (PlayersRequest) returns (PlayersReply);
+	rpc Dealer (DealerRequest) returns (DealerReply);
 }
 
+//Game
 message GameEndRequest {}
 message GameEndReply {}
 
@@ -30,17 +35,7 @@ message OnDillerUpHiddenCardReply {
 
 message IsGameRequest {}
 message IsGameReply {
-  bool value = 1;
-}
-
-message PlayersRequest {}
-message PlayersReply {
-  repeated PlayerReply Players = 1;
-}
-
-message DealerRequest {}
-message PlayerReply {
-	int32 id = 1;
+	bool value = 1;
 }
 
 message InitRequest {
@@ -51,7 +46,36 @@ message InitReply {}
 message StartRequest {}
 message StartReply {}
 
-message HitReply {}
+//Players
+message OnCardAddRequest {
+    BlackJack.Player player = 1;
+}
+message OnCardAddReply {
+    BlackJack.Player player = 1;
+    Cards.CardMessage card = 2;
+}
 
-message StandReply {}
+message OnResultRequest {
+    BlackJack.Player player = 1;
+}
+message OnResultReply {
+    BlackJack.Player player = 1;
+    enum GameResult{
+        Win = 0;
+        Lose = 1;
+        Push = 2;
+    }
+    GameResult result = 2;
+	BlackJack.ScoresReply scores = 3;
+	BlackJack.StatusReply status = 4;
+}
 
+message PlayersRequest {}
+message PlayersReply {
+	repeated BlackJack.Player players = 1;
+}
+
+message DealerRequest {}
+message DealerReply {
+	BlackJack.Player player = 1;
+}

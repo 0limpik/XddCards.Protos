@@ -5,6 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove=".git" />
+    <None Remove=".gitattributes" />
+    <None Remove=".gitignore" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Protobuf Include="Protos\Greet.proto" GrpcServices="Server, Client" />
 	  
     <Protobuf Include="Protos\Games\Games.proto" GrpcServices="Server, Client" />

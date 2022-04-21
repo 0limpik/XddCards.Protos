@@ -4,8 +4,6 @@ option csharp_namespace = "XddCards.Grpc.Games.BlackJack";
 
 package BlackJack;
 
-import "Protos/Games/Cards.proto";
-
 service PlayerGrpc {
     rpc CanTurn (Player) returns (CanTurnReply);
     rpc GetScores (Player) returns (ScoresReply);

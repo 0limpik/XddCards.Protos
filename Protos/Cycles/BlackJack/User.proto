@@ -1,0 +1,41 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "XddCards.Grpc.Cycles.BlackJack";
+
+import "Protos/Cycles/BlackJack/Hand.proto";
+
+package Cycles.BlackJack;
+
+service UserGrpc {
+	rpc GetCash(CashRequest) returns (CashResponse);
+
+	rpc TakeHand(TakeHandRequest) returns (TakeHandResponse);
+	rpc ReleaseHand(ReleaseHandRequest) returns (ReleaseHandResponse);
+
+	rpc Bet(BetRequest) returns (BetResponse);
+}
+
+message User{
+	int32 id = 1;
+	string nickname = 2;
+}
+
+message CashRequest{}
+message CashResponse{
+	string cash = 1;
+}
+
+message TakeHandRequest{
+	 Cycles.BlackJack.Hand hand = 1;
+}
+message TakeHandResponse{}
+
+message ReleaseHandRequest{
+	 Cycles.BlackJack.Hand hand = 1;
+}
+message ReleaseHandResponse{}
+
+message BetRequest{
+	string amount = 1;
+}
+message BetResponse{}

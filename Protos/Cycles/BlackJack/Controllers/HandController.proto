@@ -1,0 +1,16 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "XddCards.Grpc.Cycles.BlackJack.Controllers";
+
+import "Protos/Cycles/BlackJack/Hand.proto";
+
+package Cycles.BlackJack;
+
+service HandControllerGrpc {
+	rpc OnAvalibleHandsChange(AvalibleHandsRequest) returns (stream AvalibleHandsResponse);
+}
+
+message AvalibleHandsRequest{}
+message AvalibleHandsResponse{
+	repeated Cycles.BlackJack.Hand avalibleHands = 1;
+}

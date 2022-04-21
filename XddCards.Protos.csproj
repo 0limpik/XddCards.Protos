@@ -13,6 +13,13 @@
   <ItemGroup>
     <Protobuf Include="Protos\Greet.proto" GrpcServices="Server, Client" />
 	  
+    <Protobuf Include="Protos\Cycles\BlackJack\BJCycle.proto" GrpcServices="Server, Client" />
+    <Protobuf Include="Protos\Cycles\BlackJack\User.proto" GrpcServices="Server, Client" />
+    <Protobuf Include="Protos\Cycles\BlackJack\Hand.proto" GrpcServices="Server, Client" />
+    <Protobuf Include="Protos\Cycles\BlackJack\Controllers\HandController.proto" GrpcServices="Server, Client" />
+    <Protobuf Include="Protos\Cycles\BlackJack\Controllers\BetController.proto" GrpcServices="Server, Client" />
+    <Protobuf Include="Protos\Cycles\BlackJack\Controllers\GameController.proto" GrpcServices="Server, Client" />
+	  
     <Protobuf Include="Protos\Games\Games.proto" GrpcServices="Server, Client" />
     <Protobuf Include="Protos\Games\Cards.proto" GrpcServices="Server, Client" />
     <Protobuf Include="Protos\Games\BlackJack\Game.proto" GrpcServices="Server, Client" />

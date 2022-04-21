@@ -1,0 +1,24 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "XddCards.Grpc.Cycles.BlackJack";
+
+import "Protos/Games/Cards.proto";
+
+package Cycles.BlackJack;
+
+service HandGrpc {
+    rpc Hit(Hand) returns (HitReply);
+    rpc Stand(Hand) returns (StandReply);
+    rpc DoubleUp(Hand) returns (DoubleUpReply);
+}
+
+message Hand {
+	int32 id = 1;
+}
+
+message HitReply {
+    bool canTurn = 1;
+}
+
+message StandReply {}
+message DoubleUpReply {}

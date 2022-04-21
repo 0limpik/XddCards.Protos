@@ -1,0 +1,41 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "XddCards.Grpc.Cycles.BlackJack";
+
+import "Protos/Cycles/BlackJack/User.proto";
+
+package Cycles.BlackJack;
+
+service BJCycleGrpc{
+	rpc OnStateChange(OnStateChangeRequest) returns (stream OnStateChangeResponse);
+	rpc OnSwitchMessage(OnSwitchMessageRequest) returns (stream OnSwitchMessageResponse);
+
+	rpc Init(InitReqest) returns (InitResponse);
+	rpc Play(PlayReqest) returns (PlayResponse);
+}
+
+message OnStateChangeRequest{}
+message OnStateChangeResponse{
+	enum State{
+		Hand = 0;
+		Bet = 1;
+		Game = 2;
+	}
+	State state = 1;
+	bool execute = 2;
+}
+
+message OnSwitchMessageRequest{}
+message OnSwitchMessageResponse{
+	string message = 1;
+}
+
+message InitReqest{
+	int32 handCount = 1;
+}
+message InitResponse{}
+
+message PlayReqest{}
+message PlayResponse{
+	Cycles.BlackJack.User user = 1;
+}

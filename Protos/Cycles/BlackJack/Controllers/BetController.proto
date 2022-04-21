@@ -1,0 +1,17 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "XddCards.Grpc.Cycles.BlackJack.Controllers";
+
+import "Protos/Cycles/BlackJack/User.proto";
+
+package Cycles.BlackJack;
+
+service BetControllerGrpc {
+	rpc OnBet(OnBetRequest) returns (stream OnBetResponse);
+}
+
+message OnBetRequest{}
+message OnBetResponse{
+	repeated Cycles.BlackJack.User user = 1;
+	string amount = 2;
+}

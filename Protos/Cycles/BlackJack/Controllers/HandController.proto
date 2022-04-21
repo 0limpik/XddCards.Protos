@@ -7,10 +7,10 @@ import "Protos/Cycles/BlackJack/Base.proto";
 package Cycles.BlackJack;
 
 service HandControllerGrpc {
-	rpc OnAvalibleHandsChange(AvalibleHandsRequest) returns (stream AvalibleHandsResponse);
+	rpc OnHandsChange(HandsRequest) returns (stream HandsResponse);
 }
 
-message AvalibleHandsRequest{}
-message AvalibleHandsResponse{
+message HandsRequest{}
+message HandsResponse{
 	repeated Cycles.BlackJack.Hand hands = 1;
 }

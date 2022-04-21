@@ -6,9 +6,15 @@ package Games;
 
 service GamesGrpc {
     rpc CreateBlackJack (BlackJackRequest) returns (BlackJackReply);
+    rpc CreateBJCycle(BJCycleRequest) returns (BJCycleReply);
  }
 
 message BlackJackRequest{}
 message BlackJackReply{
+   int32 id = 1;
+}
+
+message BJCycleRequest{}
+message BJCycleReply{
    int32 id = 1;
 }

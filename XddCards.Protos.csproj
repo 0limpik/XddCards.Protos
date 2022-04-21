@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
@@ -13,6 +13,7 @@
   <ItemGroup>
     <Protobuf Include="Protos\Greet.proto" GrpcServices="Server, Client" />
 	  
+    <Protobuf Include="Protos\Cycles\BlackJack\Base.proto" GrpcServices="Server, Client" />
     <Protobuf Include="Protos\Cycles\BlackJack\BJCycle.proto" GrpcServices="Server, Client" />
     <Protobuf Include="Protos\Cycles\BlackJack\User.proto" GrpcServices="Server, Client" />
     <Protobuf Include="Protos\Cycles\BlackJack\Hand.proto" GrpcServices="Server, Client" />

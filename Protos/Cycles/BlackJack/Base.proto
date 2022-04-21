@@ -1,0 +1,15 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "XddCards.Grpc.Cycles.BlackJack";
+
+package Cycles.BlackJack;
+
+message User{
+	int32 id = 1;
+	string nickname = 2;
+}
+
+message Hand {
+	int32 id = 1;
+	User owner = 2;
+}

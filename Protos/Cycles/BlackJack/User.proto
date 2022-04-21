@@ -2,7 +2,7 @@
 
 option csharp_namespace = "XddCards.Grpc.Cycles.BlackJack";
 
-import "Protos/Cycles/BlackJack/Hand.proto";
+import "Protos/Cycles/BlackJack/Base.proto";
 
 package Cycles.BlackJack;
 
@@ -13,11 +13,6 @@ service UserGrpc {
 	rpc ReleaseHand(ReleaseHandRequest) returns (ReleaseHandResponse);
 
 	rpc Bet(BetRequest) returns (BetResponse);
-}
-
-message User{
-	int32 id = 1;
-	string nickname = 2;
 }
 
 message CashRequest{}

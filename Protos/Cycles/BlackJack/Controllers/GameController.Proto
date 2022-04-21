@@ -5,7 +5,7 @@ option csharp_namespace = "XddCards.Grpc.Cycles.BlackJack.Controllers";
 package Cycles.BlackJack.Controllers;
 
 import "Protos/Games/Cards.proto";
-import "Protos/Cycles/BlackJack/Hand.proto";
+import "Protos/Cycles/BlackJack/Base.proto";
 import "Protos/Games/BlackJack/Player.proto";
 
 

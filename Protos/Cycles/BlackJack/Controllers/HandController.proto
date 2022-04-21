@@ -2,7 +2,7 @@
 
 option csharp_namespace = "XddCards.Grpc.Cycles.BlackJack.Controllers";
 
-import "Protos/Cycles/BlackJack/Hand.proto";
+import "Protos/Cycles/BlackJack/Base.proto";
 
 package Cycles.BlackJack;
 
@@ -12,5 +12,5 @@ service HandControllerGrpc {
 
 message AvalibleHandsRequest{}
 message AvalibleHandsResponse{
-	repeated Cycles.BlackJack.Hand avalibleHands = 1;
+	repeated Cycles.BlackJack.Hand hands = 1;
 }

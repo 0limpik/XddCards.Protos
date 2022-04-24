@@ -8,9 +8,14 @@ import "Protos/Cycles/BlackJack/Base.proto";
 package Cycles.BlackJack;
 
 service HandGrpc {
+    rpc CanTurn(Hand) returns (CantTurnReply);
+
     rpc Hit(Hand) returns (HitReply);
     rpc Stand(Hand) returns (StandReply);
     rpc DoubleUp(Hand) returns (DoubleUpReply);
+}
+message CantTurnReply {
+    bool canTurn = 1;
 }
 
 message HitReply {

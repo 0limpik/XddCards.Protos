@@ -2,6 +2,8 @@
 
 option csharp_namespace = "XddCards.Grpc.Games.BlackJack";
 
+import "Protos/Cycles/BlackJack/Base.proto";
+
 package Games.BlackJack;
 
 service BlackJackGrpc {
@@ -17,12 +19,15 @@ message Game{
 message CreateRequest{}
 message CreateResponse{
    Game game = 1;
+   Cycles.BlackJack.User user = 2;
 }
 
 message ConnectRequest{
    Game game = 1;
 }
-message ConnectResponse{}
+message ConnectResponse{
+   Cycles.BlackJack.User user = 2;
+}
 
 message AllRequest{}
 message AllResponse{

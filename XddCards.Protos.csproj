@@ -13,6 +13,7 @@
   <ItemGroup>
     <Protobuf Include="Protos\Greet.proto" GrpcServices="Server, Client" />
 	  
+    <Protobuf Include="Protos\Games\BlackJack.proto" GrpcServices="Server, Client" />
     <Protobuf Include="Protos\Cycles\BlackJack\Base.proto" GrpcServices="Server, Client" />
     <Protobuf Include="Protos\Cycles\BlackJack\BJCycle.proto" GrpcServices="Server, Client" />
     <Protobuf Include="Protos\Cycles\BlackJack\User.proto" GrpcServices="Server, Client" />

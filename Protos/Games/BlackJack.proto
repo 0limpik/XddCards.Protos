@@ -1,0 +1,30 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "XddCards.Grpc.Games.BlackJack";
+
+package Games.BlackJack;
+
+service BlackJackGrpc {
+    rpc Create(CreateRequest) returns (CreateResponse);
+    rpc Connect(ConnectRequest) returns (ConnectResponse);
+    rpc GetAll(AllRequest) returns (AllResponse);
+}
+
+message Game{
+   int32 id = 1;
+}
+
+message CreateRequest{}
+message CreateResponse{
+   Game game = 1;
+}
+
+message ConnectRequest{
+   Game game = 1;
+}
+message ConnectResponse{}
+
+message AllRequest{}
+message AllResponse{
+   repeated Game games = 1;
+}

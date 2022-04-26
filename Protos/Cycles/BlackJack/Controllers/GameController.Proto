@@ -31,6 +31,7 @@ message OnCardAddRequest {}
 message OnCardAddReply {
     Cycles.BlackJack.Hand hand = 1;
     Cards.CardMessage card = 2;
+    bool CanTurn = 3;
 }
 
 message OnResultRequest {}
